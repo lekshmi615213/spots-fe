@@ -1,0 +1,204 @@
+query clipart {
+  clipart {
+     ...clipartFields
+  }
+}
+
+query cupcakeTypes {
+  cupcakeTypes {
+     ...cupcakeTypesFields
+  }
+}
+
+query fonts {
+  fonts {
+     ...fontFields
+  }
+}
+
+query colors {
+  colors {
+     ...colorFields
+  }
+}
+
+query buildingTypes {
+  buildingTypes {
+    ...buildingTypesFields
+  }
+}
+
+query industries {
+  industries {
+    ...industriesFields
+  }
+}
+
+fragment clipartFields on Clipart {
+  id
+  name
+  category
+  imageURL
+}
+
+fragment cupcakeTypesFields on CupcakeType {
+  id
+  imageURL
+  name
+}
+
+fragment fontFields on Font {
+  id
+  name
+  fileURL
+}
+
+fragment colorFields on Color {
+  id
+  name
+  hexValue
+}
+
+fragment buildingTypesFields on BuildingType {
+  id
+  name
+  askForDoorman
+}
+
+fragment industriesFields on IndustryType {
+  id
+  name
+}
+
+
+
+mutation calculateOrderPrice($input: CalculateOrderPriceInput!) {
+  calculateOrderPrice(input: $input) {
+    ...calculateOrderPricePayloadFields
+  }
+}
+
+mutation createOrder($input: CreateOrderInput!) {
+  createOrder(input: $input) {
+    ...createOrderPayloadFields
+  }
+}
+
+mutation validateOrder($input: ValidateOrderInput!) {
+  validate: validateOrder(input: $input) {
+    ...validateOrderPayloadFields
+  }
+}
+
+mutation validateOrderInformation($input: ValidateOrderInformationInput!) {
+  validate: validateOrderInformation(input: $input) {
+    ...validateOrderInformationFields
+  }
+}
+
+mutation validateOrderOverview($input: ValidateOrderOverviewInput!) {
+  validate: validateOrderOverview(input: $input) {
+    ...validateOrderOverviewFields
+  }
+}
+
+mutation validateOrderPayment($input: ValidateOrderPaymentInput!) {
+  validate: validateOrderPayment(input: $input) {
+    ...validateOrderPaymentFields
+  }
+}
+
+
+mutation validateOrderPersonalInformation($input: ValidateOrderPersonalInformationInput!) {
+  validate: validateOrderPersonalInformation(input: $input) {
+    ...validateOrderPersonalInformationPayloadFields
+  }
+}
+
+mutation validateOrderPersonalization($input: ValidateOrderPersonalizationInput!) {
+  validate: validateOrderPersonalization(input: $input) {
+    ...validateOrderPersonalizationPayloadFields
+  }
+}
+
+fragment calculateOrderPricePayloadFields on CalculateOrderPricePayload {
+  cupcakeDesigns
+  discount
+  giftMessage
+  rushOrder
+  shipping
+  total
+  units
+}
+
+fragment createOrderPayloadFields on CreateOrderPayload {
+  errors {
+    ...errorFields
+  }
+  valid
+  persisted
+  order {
+    email
+ }
+}
+
+fragment validateOrderPayloadFields on ValidateOrderPayload {
+  errors {
+    ...errorFields
+  }
+  valid
+}
+
+fragment validateOrderInformationFields on ValidateOrderInformationPayload {
+  errors {
+    ...errorFields
+  }
+  valid
+}
+
+fragment validateOrderOverviewFields on ValidateOrderOverviewPayload {
+  errors {
+    ...errorFields
+  }
+  valid
+}
+
+fragment validateOrderPaymentFields on ValidateOrderPaymentPayload {
+  errors {
+    ...errorFields
+  }
+  valid
+}
+
+fragment validateOrderPersonalInformationPayloadFields on ValidateOrderPersonalInformationPayload {
+  errors {
+    ...errorFields
+  }
+  valid
+}
+
+fragment validateOrderPersonalizationPayloadFields on ValidateOrderPersonalizationPayload {
+  errors {
+    ...errorFields
+  }
+  valid
+}
+
+fragment errorFields on Error {
+  ...innerErrorFields
+  suberrors {
+    ...innerErrorFields
+    suberrors {
+      ...innerErrorFields
+      suberrors {
+        ...innerErrorFields
+      }
+    }
+  }
+}
+
+fragment innerErrorFields on Error {
+  index
+  key
+  messages
+}

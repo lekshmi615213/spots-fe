@@ -1,0 +1,12 @@
+/target
+/checkouts
+/.lein-*
+/.nrepl-port
+/resources/public/js
+/*-init.clj
+/*.log
+out
+.DS_Store
+/node_modules
+/spot-web/nbproject/private/
+/PaintApp/nbproject/private/
